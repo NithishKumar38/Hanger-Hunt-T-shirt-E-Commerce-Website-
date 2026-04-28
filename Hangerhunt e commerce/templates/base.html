@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangerhunt | {% block title %}{% endblock %}</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo-container">
+            <a href="{{ url_for('index') }}">Hangerhunt</a>
+        </div>
+        <div class="search-bar">
+            <form action="{{ url_for('search') }}" method="GET" style="display: flex; width: 100%; align-items: center; margin: 0;">
+                <i class="fa-solid fa-search" style="color: var(--secondary);"></i>
+                <input type="text" name="q" placeholder="Search collections..." value="{{ search_query | default('') }}">
+            </form>
+        </div>
+        <div class="nav-links">
+            <a href="{{ url_for('index') }}" class="btn btn-outline"><i class="fa-solid fa-home"></i> Home</a>
+            <a href="{{ url_for('customize') }}" class="btn btn-outline">Customize</a>
+            {% if session.get('customer_mobile') %}
+                <a href="{{ url_for('profile') }}" class="btn btn-primary" title="Profile"><i class="fa-solid fa-user"></i> {{ session.get('customer_name', 'Profile') }}</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="btn btn-primary"><i class="fa-solid fa-user"></i> User Login</a>
+            {% endif %}
+            
+            {% if session.get('admin_mobile') %}
+                <a href="{{ url_for('admin_dashboard') }}" class="btn btn-outline"><i class="fa-solid fa-shield-halved"></i> Admin Panels</a>
+            {% else %}
+                <a href="{{ url_for('admin_login') }}" class="btn btn-outline"><i class="fa-solid fa-shield-halved"></i> Admin</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="container animate-fade-in">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>Hangerhunt</h3>
+                <p>Your one-stop destination for premium and custom apparel.</p>
+            </div>
+            <div class="footer-address">
+                <h4>Contact Us</h4>
+                <p><i class="fa-solid fa-location-dot"></i> Thondamuthur, Coimbatore,</p>
+                <p>Tamil Nadu, 641402</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Hangerhunt E-commerce. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Main Script -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

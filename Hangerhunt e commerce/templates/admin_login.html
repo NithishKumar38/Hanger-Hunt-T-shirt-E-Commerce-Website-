@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Login{% endblock %}
+
+{% block content %}
+<div class="auth-container" style="border-top: 5px solid var(--primary);">
+    <h1 style="text-align: center; margin-bottom: 1rem;"><i class="fa-solid fa-shield-halved"></i> Admin Portal</h1>
+    <p style="text-align: center; color: var(--secondary); margin-bottom: 2rem;">Sign in to access the management dashboard.</p>
+    
+
+    <form action="{{ url_for('admin_login') }}" method="POST">
+        <div class="form-group">
+            <label for="mobile_number">Admin Mobile Number</label>
+            <input type="tel" name="mobile_number" id="mobile_number" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control" required>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.1rem; padding: 1rem; margin-top: 1rem; background-color: var(--primary);">Secure Login</button>
+    </form>
+</div>
+{% endblock %}

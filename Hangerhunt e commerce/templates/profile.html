@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}User Profile{% endblock %}
+
+{% block content %}
+<div class="form-container" style="max-width: 800px; margin-top: 2rem;">
+    <!-- Profile Header -->
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--bg-color); padding-bottom: 1rem; margin-bottom: 2rem;">
+        <div>
+            <h1 style="margin: 0;">Hello, {{ name | default('Customer') }}!</h1>
+            <p style="color: var(--secondary); margin-top: 0.5rem;">Welcome to your personalized dashboard.</p>
+        </div>
+        <a href="{{ url_for('logout') }}" class="btn btn-outline" style="border-color: var(--accent); color: var(--accent);">
+            <i class="fa-solid fa-right-from-bracket"></i> Logout
+        </a>
+    </div>
+
+    <!-- Orders Section -->
+    <div class="orders-section">
+        <h2><i class="fa-solid fa-box-open" style="color: var(--primary);"></i> Your Order History</h2>
+        
+        {% if orders %}
+            <p style="margin-bottom: 1.5rem; color: var(--secondary);">You have placed <strong>{{ orders|length }}</strong> order(s).</p>
+            
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                {% for order in orders %}
+                <div style="background: var(--bg-color); padding: 1.5rem; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);">
+                    <div>
+                        <p style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--primary);">Order #{{ order.order_id }}</p>
+                        <p style="font-size: 0.9rem; color: var(--secondary);">
+                            <i class="fa-regular fa-calendar" style="margin-right: 5px;"></i> {{ order.created_at.strftime('%B %d, %Y') if order.created_at else 'Unknown Date' }}
+                        </p>
+                        <p style="font-size: 0.95rem; margin-top: 0.6rem;">
+                            Type: <strong style="color: var(--accent);">{{ order.order_type }}</strong>
+                        </p>
+                    </div>
+                    
+                    <div style="text-align: right;">
+                        <span style="display: inline-block; padding: 0.5rem 1rem; border-radius: 5px; font-weight: bold; font-size: 0.9rem;
+                            background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb;">
+                            Completed
+                        </span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <!-- Empty State -->
+            <div style="text-align: center; padding: 3rem 1rem; background: var(--bg-color); border-radius: 10px; margin-top: 1.5rem;">
+                <i class="fa-solid fa-cart-arrow-down fa-3x" style="color: var(--secondary); margin-bottom: 1rem;"></i>
+                <h3>No Orders Yet</h3>
+                <p style="color: var(--secondary); margin-top: 0.5rem;">Looks like you haven't placed an order. Start shopping now!</p>
+                <a href="{{ url_for('index') }}" class="btn btn-primary" style="margin-top: 1.5rem; display: inline-block;">Browse Collection</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

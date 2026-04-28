@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Address Filling{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    {% if success %}
+        <div style="text-align: center; padding: 3rem 1rem;">
+            <i class="fa-solid fa-circle-check fa-4x" style="color: #28a745; margin-bottom: 1rem;"></i>
+            <h1 style="color: #28a745;">Order placed successfully!</h1>
+            <p style="color: var(--secondary); margin-top: 1rem;">Thank you for shopping with Hangerhunt. Your order is being processed.</p>
+            <br>
+            <a href="{{ url_for('index') }}" class="btn btn-outline">Return to Home</a>
+        </div>
+    {% else %}
+        <h1 style="text-align: center; margin-bottom: 2rem;">Address Part</h1>
+        
+        <form action="{{ url_for('address') }}" method="POST">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" name="name" id="name" class="form-control" placeholder="Enter your full name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="tel" name="mobile" id="mobile" class="form-control" placeholder="10-digit mobile number" value="{{ session.get('customer_mobile', '') }}" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="address">Delivery Address</label>
+                <textarea name="address" id="address" class="form-control" rows="4" placeholder="Enter your complete address (House No, Street, Landmark)" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="pincode">Pincode</label>
+                <input type="text" name="pincode" id="pincode" class="form-control" placeholder="6-digit postal code" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem; font-size: 1.1rem; padding: 1rem;">Place Order</button>
+        </form>
+    {% endif %}
+</div>
+{% endblock %}
