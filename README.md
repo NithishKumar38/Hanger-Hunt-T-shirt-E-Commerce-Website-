@@ -1,4 +1,4 @@
-# 🧥 Hanger Hunt – Full-Stack T-Shirt E-Commerce Platform
+# 🧥 Hanger Hunt – T-Shirt E-Commerce Platform
 
 Hanger Hunt is a full-stack e-commerce web application that enables customers to browse, purchase, and customize T-shirts through an intuitive online shopping experience. The platform provides dedicated customer and administrator modules for seamless product management, order processing, and customization services.
 
