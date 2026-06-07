@@ -6,6 +6,8 @@ Built using **Flask**, **MySQL**, **HTML**, **CSS**, and **JavaScript**, the app
 
 ---
 
+<img width="1920" height="1080" alt="Screenshot (99)" src="https://github.com/user-attachments/assets/662fb582-bc08-4e6d-aca8-b3e7f181f5dd" />
+
 ## 🚀 Key Features
 
 ### Customer Module
@@ -20,6 +22,9 @@ Built using **Flask**, **MySQL**, **HTML**, **CSS**, and **JavaScript**, the app
 * View order history and track previous purchases.
 * Persistent login sessions for enhanced user convenience.
 
+<img width="1920" height="1080" alt="Screenshot (101)" src="https://github.com/user-attachments/assets/7e0932ea-cb43-4f11-a8fc-70cd013ff2fd" />
+
+
 ### Administrator Module
 
 * Secure administrator authentication.
@@ -31,6 +36,7 @@ Built using **Flask**, **MySQL**, **HTML**, **CSS**, and **JavaScript**, the app
 * Automatically generate default administrator credentials during initial setup.
 
 ---
+<img width="1920" height="1080" alt="Screenshot (102)" src="https://github.com/user-attachments/assets/47c21ea6-2236-4088-9429-c4480b6c8f4e" />
 
 ## 🛠️ Technology Stack
 
@@ -133,24 +139,6 @@ http://127.0.0.1:5000
 
 ---
 
-## 🔑 Default Administrator Credentials
-
-The application automatically creates a default administrator account during the first execution.
-
-| Credential    | Value      |
-| ------------- | ---------- |
-| Mobile Number | 1234567890 |
-| Password      | admin123   |
-
-**Admin Login URL**
-
-```text
-http://127.0.0.1:5000/admin/login
-```
-
-> For security reasons, it is strongly recommended to change the default credentials before deploying the application.
-
----
 
 ## 📦 Database Design
 
@@ -172,9 +160,22 @@ The application uses the following core tables:
 
 Customers can purchase products from the existing catalog by selecting preferred size, color, and quantity.
 
+https://github.com/user-attachments/assets/41c5779a-b657-4a7b-b6e8-e006e5e19614
+
+
+
 ### Custom Orders
 
 Customers can upload personalized front and back design images and place customized T-shirt orders according to their preferences.
+
+
+https://github.com/user-attachments/assets/3fd8803b-7579-4a90-8bcd-fe67116e4201
+
+
+
+
+
+
 
 ---
 
@@ -206,12 +207,6 @@ Customers can upload personalized front and back design images and place customi
 
 GitHub: https://github.com/NithishKumar38
 
----
 
-## 📄 License
-
-This project is licensed under the MIT License.
-
----
 
 ⭐ If you found this project useful, consider giving the repository a star.
